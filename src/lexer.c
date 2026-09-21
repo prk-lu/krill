@@ -65,13 +65,16 @@ Token lexer_next(void) {
     if (c == '>') return make_token(TOKEN_GT, start, 1);
     if (c == '<') return make_token(TOKEN_LT, start, 1);
     if (c == '=') return make_token(TOKEN_ASSIGN, start, 1);
+    if (c == '+') return make_token(TOKEN_PLUS, start, 1);
+    if (c == '*') return make_token(TOKEN_STAR, start, 1);
+    if (c == '/') return make_token(TOKEN_SLASH, start, 1);
 
     if (c == '-') {
         if (*cur == '>') {
             cur++;
             return make_token(TOKEN_ARROW, start, 2);
         }
-        return make_token(TOKEN_ERROR, start, 1); 
+        return make_token(TOKEN_MINUS, start, 1);
     }
 
     return make_token(TOKEN_ERROR, start, 1);
