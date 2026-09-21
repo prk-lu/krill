@@ -29,7 +29,7 @@ static const char *type_name(TokenType t) {
 }
 
 int main(void) {
-    lexer_init("id = x -> return x end [int -> int]");
+    lexer_init("distance [float, float, float -> float]\ndistance = vx, vy, g ->\n  return vx * (2 * vy / g)\nend");
 
     Token tok;
     do {
