@@ -10,6 +10,10 @@ static const char *type_name(TokenType t) {
         case TOKEN_RETURN:     return "RETURN";
         case TOKEN_IDENTIFIER: return "IDENTIFIER";
         case TOKEN_NUMBER:     return "NUMBER";
+        case TOKEN_PLUS:       return "PLUS";
+        case TOKEN_MINUS:      return "MINUS";
+        case TOKEN_STAR:       return "STAR";
+        case TOKEN_SLASH:      return "SLASH";
         case TOKEN_GT:         return "GT";
         case TOKEN_LT:         return "LT";
         case TOKEN_ASSIGN:     return "ASSIGN";
