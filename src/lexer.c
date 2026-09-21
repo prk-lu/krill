@@ -4,7 +4,7 @@
 
 static const char *cur;   /* cursor */
 static int line;          /* current line number */
-static int next_id;       /* Id for the next token */
+static int next_id;       /* id for the next token */
 
 void lexer_init(const char *source) {
     cur = source;
@@ -42,6 +42,10 @@ Token lexer_next(void) {
             return make_token(TOKEN_IF, start, len);
         if (len == 4 && strncmp(start, "else", 4) == 0)
             return make_token(TOKEN_ELSE, start, len);
+        if (len == 3 && strncmp(start, "end", 3) == 0)
+            return make_token(TOKEN_END, start, len);
+        if (len == 6 && strncmp(start, "return", 6) == 0)
+            return make_token(TOKEN_RETURN, start, len);
         return make_token(TOKEN_IDENTIFIER, start, len);
     }
 
@@ -55,12 +59,20 @@ Token lexer_next(void) {
 
     if (c == '(') return make_token(TOKEN_LPAREN, start, 1);
     if (c == ')') return make_token(TOKEN_RPAREN, start, 1);
-    if (c == '{') return make_token(TOKEN_LBRACE, start, 1);
-    if (c == '}') return make_token(TOKEN_RBRACE, start, 1);
-    if (c == ';') return make_token(TOKEN_SEMICOLON, start, 1);
+    if (c == '[') return make_token(TOKEN_LBRACKET, start, 1);
+    if (c == ']') return make_token(TOKEN_RBRACKET, start, 1);
+    if (c == ',') return make_token(TOKEN_COMMA, start, 1);
     if (c == '>') return make_token(TOKEN_GT, start, 1);
     if (c == '<') return make_token(TOKEN_LT, start, 1);
     if (c == '=') return make_token(TOKEN_ASSIGN, start, 1);
+
+    if (c == '-') {
+        if (*cur == '>') {
+            cur++;
+            return make_token(TOKEN_ARROW, start, 2);
+        }
+        return make_token(TOKEN_ERROR, start, 1); 
+    }
 
     return make_token(TOKEN_ERROR, start, 1);
 }

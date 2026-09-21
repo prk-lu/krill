@@ -1,0 +1,16 @@
+distance [float, float, float -> float]
+distance = vx, vy, g ->
+  return vx * (2 * vy / g)
+end
+ 
+normalize [float -> float]
+normalize = angle ->
+  if angle > 180
+    return angle - 360
+  else
+    return angle
+  end
+end
+
+d = distance(20, 15, 10)
+A = normalize(270)

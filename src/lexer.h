@@ -6,6 +6,9 @@
 typedef enum {
     TOKEN_IF,
     TOKEN_ELSE,
+    TOKEN_ARROW,
+    TOKEN_END,
+    TOKEN_RETURN,
     TOKEN_IDENTIFIER,
     TOKEN_NUMBER,
     TOKEN_GT,
@@ -13,9 +16,9 @@ typedef enum {
     TOKEN_ASSIGN,
     TOKEN_LPAREN,
     TOKEN_RPAREN,
-    TOKEN_LBRACE,
-    TOKEN_RBRACE,
-    TOKEN_SEMICOLON,
+    TOKEN_LBRACKET,
+    TOKEN_RBRACKET,
+    TOKEN_COMMA,
     TOKEN_EOF,
     TOKEN_ERROR
 } TokenType;
